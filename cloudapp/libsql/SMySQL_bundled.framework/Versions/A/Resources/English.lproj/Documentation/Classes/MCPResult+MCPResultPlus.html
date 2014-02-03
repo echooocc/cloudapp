@@ -1,0 +1,119 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPResult (MCPResultPlus)">MCPResult (MCPResultPlus)</A></H1></FONT><BR>
+
+
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPResultPlus.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Category Description</H2>
+<CODE> $Id: MCPResultPlus.m,v 1.1 2003/10/11 18:48:07 sergecohen Exp $ </CODE><P>
+
+This Category is provided to get shortcuts reformat the table obtained by a MCPResult (fetching a column, a 2D array...).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Getting a complete column as an array
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- fetchColAtIndex:">- fetchColAtIndex:</A></DD>
+		
+			<DD> <A HREF="#- fetchColWithName:">- fetchColWithName:</A></DD>
+		
+		</DL>
+	
+		
+			Getting the complete result as 2D array
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- fetch2DResultAsType:">- fetch2DResultAsType:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- fetch2DResultAsType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult (MCPResultPlus)/fetch2DResultAsType:">fetch2DResultAsType:</A></H3><P>
+		<CODE>- (id)<B>fetch2DResultAsType:</B>(MCPReturnType)<EM>aType</EM>
+			
+		</CODE><P>
+		Returns the complete result table in a 2D object, which type depends on <I>aType</I>:<P>
+
+- <CODE>MCPTypeArray</CODE> : a NSArray of rows as NSArray,<P>
+
+- <CODE>MCPTypeDictionary</CODE> : a NSArray of rows as NSDictionary,<P>
+
+- <CODE>MCPTypeFlippedArray</CODE> : a NSArray of columns (as NSArray),<P>
+
+- <CODE>MCPTypeFlippedDictionary</CODE> : a NSDictionary of columns (as NSArray)<P>
+
+In any case the read position is restored at the end of the call (hence a fetchRow will get the same row wether this method is called before it or not).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchColAtIndex:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult (MCPResultPlus)/fetchColAtIndex:">fetchColAtIndex:</A></H3><P>
+		<CODE>- (NSArray *)<B>fetchColAtIndex:</B>(unsigned int)<EM>aCol</EM>
+			
+		</CODE><P>
+		Getting a complete column into a NSArray (1D). The index starts from 0 (first column).<P>
+
+The index 0 of the returned array always correspond to the first row (ie: returned NSArray is indexed by row number), the read position is restored after to it's initial position after the read.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchColWithName:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult (MCPResultPlus)/fetchColWithName:">fetchColWithName:</A></H3><P>
+		<CODE>- (NSArray *)<B>fetchColWithName:</B>(NSString *)<EM>aColName</EM>
+			
+		</CODE><P>
+		The same as <CODE>fetchColAtIndex:</CODE>, but the choice of the column is done by it's field name. Indeed it is just a wrapper to <CODE>fetchColAtIndex</CODE>.
+	
+
+
+
+
+<P><HR>
+Version 1.1 Copyright &copy;2003 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:26 2004
+<P>
+</BODY></HTML>

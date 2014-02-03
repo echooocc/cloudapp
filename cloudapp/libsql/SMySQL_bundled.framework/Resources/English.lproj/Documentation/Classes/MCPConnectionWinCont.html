@@ -1,0 +1,229 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPConnectionWinCont">MCPConnectionWinCont</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSWindowController</DD>
+</DL></blockquote>
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPConnectionWinCont.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+This class is the WindowController for the window asking parameters of connection to the user.<P>
+
+It is responsible to set the appropriate value of the MCPDocument instance variables.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>IBOutlet NSTextField *<B>mHostField</B>;</CODE><BR>
+		<CODE>IBOutlet NSTextField *<B>mLoginField</B>;</CODE><BR>
+		<CODE>IBOutlet NSTextField *<B>mDatabaseField</B>;</CODE><BR>
+		<CODE>IBOutlet NSTextField *<B>mPortField</B>;</CODE><BR>
+		<CODE>IBOutlet NSPanel *<B>mPasswordSheet</B>;</CODE><BR>
+		<CODE>IBOutlet NSTextField *<B>mPasswordField</B>;</CODE><BR>
+		<CODE>IBOutlet NSButton *<B>mCreateButton</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>mHostField</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mLoginField</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mDatabaseField</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mPortField</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mPasswordSheet</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mPasswordField</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>mCreateButton</TD><TD>No description.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Actions for Interface Builder
+		
+		<DL><DT></DT>
+		
+		</DL>
+	
+		
+			For the clear text information.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- doGo:">- doGo:</A></DD>
+		
+			<DD> <A HREF="#- doCancel:">- doCancel:</A></DD>
+		
+			<DD> <A HREF="#- doCreate:">- doCreate:</A></DD>
+		
+			<DD> <A HREF="#- modifyInstance:">- modifyInstance:</A></DD>
+		
+		</DL>
+	
+		
+			For the password.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- passwordClick:">- passwordClick:</A></DD>
+		
+			<DD> <A HREF="#- askPassword:">- askPassword:</A></DD>
+		
+			<DD> <A HREF="#- Password">- Password</A></DD>
+		
+		</DL>
+	
+		
+			Overrides of NSWindowController method, to adapt to this Window Controller.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- init">- init</A></DD>
+		
+			<DD> <A HREF="#- dealloc">- dealloc</A></DD>
+		
+			<DD> <A HREF="#- windowDidLoad">- windowDidLoad</A></DD>
+		
+		</DL>
+	
+		
+			Getting the button for creating a DB.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- getCreateButton">- getCreateButton</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- Password"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/Password">Password</A></H3><P>
+		<CODE>- (NSString *)<B>Password</B>
+		</CODE><P>
+		Send the password (from the NSPasswordField), this method puts the password in the answer (as an autoreleased object), and DELETE it from the NSSecureTextField.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- askPassword:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/askPassword:">askPassword:</A></H3><P>
+		<CODE>- (IBAction)<B>askPassword:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dealloc"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/dealloc">dealloc</A></H3><P>
+		<CODE>- (void)<B>dealloc</B>
+		</CODE><P>
+		Gives notification that the WindowController is being deallocated (is it really useful? not yet!).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- doCancel:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/doCancel:">doCancel:</A></H3><P>
+		<CODE>- (IBAction)<B>doCancel:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		What to do when the user clicks on the Cancel button of the window.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- doCreate:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/doCreate:">doCreate:</A></H3><P>
+		<CODE>- (IBAction)<B>doCreate:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- doGo:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/doGo:">doGo:</A></H3><P>
+		<CODE>- (IBAction)<B>doGo:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		What to do when the user clicks on the Go button of the window.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getCreateButton"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/getCreateButton">getCreateButton</A></H3><P>
+		<CODE>- (NSButton*)<B>getCreateButton</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- init"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/init">init</A></H3><P>
+		<CODE>- (id)<B>init</B>
+		</CODE><P>
+		When inited, open the proper window...
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- modifyInstance:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/modifyInstance:">modifyInstance:</A></H3><P>
+		<CODE>- (IBAction)<B>modifyInstance:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		Action to take when the user modify one of the entry of the New Connection dialog.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- passwordClick:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/passwordClick:">passwordClick:</A></H3><P>
+		<CODE>- (IBAction)<B>passwordClick:</B>(id)<EM>sender</EM>
+			
+		</CODE><P>
+		For the password.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- windowDidLoad"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnectionWinCont/windowDidLoad">windowDidLoad</A></H3><P>
+		<CODE>- (void)<B>windowDidLoad</B>
+		</CODE><P>
+		What to do once the window has been loaded : update the fields...
+	
+
+
+
+
+<P><HR>
+Version 1.1 Copyright &copy;2004 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:27 2004
+<P>
+</BODY></HTML>

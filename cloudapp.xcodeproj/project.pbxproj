@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F6289BD3161CD81B00F77643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BD2161CD81B00F77643 /* UIKit.framework */; };
+		F6289BD5161CD81B00F77643 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BD4161CD81B00F77643 /* Foundation.framework */; };
+		F6289BD7161CD81B00F77643 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BD6161CD81B00F77643 /* CoreGraphics.framework */; };
+		F6289BDD161CD81B00F77643 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6289BDB161CD81B00F77643 /* InfoPlist.strings */; };
+		F6289BDF161CD81B00F77643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289BDE161CD81B00F77643 /* main.m */; };
+		F6289BE3161CD81B00F77643 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289BE2161CD81B00F77643 /* AppDelegate.m */; };
+		F6289BE6161CD81B00F77643 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6289BE4161CD81B00F77643 /* MainStoryboard_iPhone.storyboard */; };
+		F6289BE9161CD81B00F77643 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6289BE7161CD81B00F77643 /* MainStoryboard_iPad.storyboard */; };
+		F6289BEC161CD81B00F77643 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289BEB161CD81B00F77643 /* ViewController.m */; };
+		F6289BF4161CD81C00F77643 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BF3161CD81C00F77643 /* SenTestingKit.framework */; };
+		F6289BF5161CD81C00F77643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BD2161CD81B00F77643 /* UIKit.framework */; };
+		F6289BF6161CD81C00F77643 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289BD4161CD81B00F77643 /* Foundation.framework */; };
+		F6289BFE161CD81C00F77643 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6289BFC161CD81C00F77643 /* InfoPlist.strings */; };
+		F6289C01161CD81C00F77643 /* cloudappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289C00161CD81C00F77643 /* cloudappTests.m */; };
+		F6289C12161CE7B500F77643 /* DirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289C11161CE7B500F77643 /* DirectoryViewController.m */; };
+		F6289C15161CE80800F77643 /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289C14161CE80800F77643 /* Directory.m */; };
+		F6440A0E161D015700E3CFBE /* DirectoryList.m in Sources */ = {isa = PBXBuildFile; fileRef = F6440A0D161D015700E3CFBE /* DirectoryList.m */; };
+		F6440A13161D086500E3CFBE /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6289C0A161CE62000F77643 /* libsqlite3.0.dylib */; };
+		F6440A1B161D0DBD00E3CFBE /* Directory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6289C14161CE80800F77643 /* Directory.m */; };
+		F656AE7E161E0C8C0079A4C2 /* SMySQL_bundled.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F656AE7D161E0C8C0079A4C2 /* SMySQL_bundled.framework */; };
+		F676D5001624EDD7005EE651 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F676D4FF1624EDD7005EE651 /* DetailViewController.m */; };
+		F676D5081624F262005EE651 /* extra.css in Resources */ = {isa = PBXBuildFile; fileRef = F676D5021624F262005EE651 /* extra.css */; };
+		F676D50A1624F262005EE651 /* main.html in Resources */ = {isa = PBXBuildFile; fileRef = F676D5041624F262005EE651 /* main.html */; };
+		F676D50B1624F262005EE651 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = F676D5051624F262005EE651 /* page.html */; };
+		F676D50C1624F262005EE651 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F676D5061624F262005EE651 /* test.jpg */; };
+		F6A3FA02162F784C00D7B5E3 /* directory.php in Resources */ = {isa = PBXBuildFile; fileRef = F6A3FA01162F784C00D7B5E3 /* directory.php */; };
+		F6DE7978162C74BB0038186E /* data.sql in Resources */ = {isa = PBXBuildFile; fileRef = F6DE7976162C74BB0038186E /* data.sql */; };
+		F6DE7979162C74BB0038186E /* test.db in Resources */ = {isa = PBXBuildFile; fileRef = F6DE7977162C74BB0038186E /* test.db */; };
+		F6DE799D162CAD9C0038186E /* libmysqlclient_device.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DE7999162CAD9C0038186E /* libmysqlclient_device.a */; };
+		F6DE799E162CAD9C0038186E /* libmysqlclient_simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DE799A162CAD9C0038186E /* libmysqlclient_simulator.a */; };
+		F6DE799F162CAD9C0038186E /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DE799B162CAD9C0038186E /* libmysqlclient.a */; };
+		F6DE79F2162CB0810038186E /* my_config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = F6DE79C4162CB0810038186E /* my_config.h.in */; };
+		F6DE79F3162CB0810038186E /* mysql.h.pp in Sources */ = {isa = PBXBuildFile; fileRef = F6DE79DA162CB0810038186E /* mysql.h.pp */; };
+		F6DE79F4162CB0810038186E /* mysql_version.h.in in Resources */ = {isa = PBXBuildFile; fileRef = F6DE79DE162CB0810038186E /* mysql_version.h.in */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6289BF7161CD81C00F77643 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6289BC5161CD81B00F77643 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6289BCD161CD81B00F77643;
+			remoteInfo = cloudapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F6289BCE161CD81B00F77643 /* cloudapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cloudapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6289BD2161CD81B00F77643 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F6289BD4161CD81B00F77643 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F6289BD6161CD81B00F77643 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F6289BDA161CD81B00F77643 /* cloudapp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cloudapp-Info.plist"; sourceTree = "<group>"; };
+		F6289BDC161CD81B00F77643 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F6289BDE161CD81B00F77643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F6289BE0161CD81B00F77643 /* cloudapp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cloudapp-Prefix.pch"; sourceTree = "<group>"; };
+		F6289BE1161CD81B00F77643 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F6289BE2161CD81B00F77643 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F6289BE5161CD81B00F77643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F6289BE8161CD81B00F77643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		F6289BEA161CD81B00F77643 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F6289BEB161CD81B00F77643 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F6289BF2161CD81C00F77643 /* cloudappTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cloudappTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6289BF3161CD81C00F77643 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F6289BFB161CD81C00F77643 /* cloudappTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cloudappTests-Info.plist"; sourceTree = "<group>"; };
+		F6289BFD161CD81C00F77643 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F6289BFF161CD81C00F77643 /* cloudappTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cloudappTests.h; sourceTree = "<group>"; };
+		F6289C00161CD81C00F77643 /* cloudappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cloudappTests.m; sourceTree = "<group>"; };
+		F6289C0A161CE62000F77643 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		F6289C10161CE7B500F77643 /* DirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryViewController.h; sourceTree = "<group>"; };
+		F6289C11161CE7B500F77643 /* DirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryViewController.m; sourceTree = "<group>"; };
+		F6289C13161CE80800F77643 /* Directory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
+		F6289C14161CE80800F77643 /* Directory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directory.m; sourceTree = "<group>"; };
+		F6440A0C161D015700E3CFBE /* DirectoryList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryList.h; sourceTree = "<group>"; };
+		F6440A0D161D015700E3CFBE /* DirectoryList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryList.m; sourceTree = "<group>"; };
+		F656AE7D161E0C8C0079A4C2 /* SMySQL_bundled.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMySQL_bundled.framework; sourceTree = "<group>"; };
+		F676D4FE1624EDD7005EE651 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		F676D4FF1624EDD7005EE651 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		F676D5021624F262005EE651 /* extra.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = extra.css; sourceTree = "<group>"; };
+		F676D5041624F262005EE651 /* main.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = main.html; sourceTree = "<group>"; };
+		F676D5051624F262005EE651 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
+		F676D5061624F262005EE651 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		F6A3FA01162F784C00D7B5E3 /* directory.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = directory.php; sourceTree = "<group>"; };
+		F6DE7976162C74BB0038186E /* data.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.sql; sourceTree = "<group>"; };
+		F6DE7977162C74BB0038186E /* test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.db; sourceTree = "<group>"; };
+		F6DE7998162CAD9C0038186E /* libmysql.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysql.dylib; sourceTree = "<group>"; };
+		F6DE7999162CAD9C0038186E /* libmysqlclient_device.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient_device.a; sourceTree = "<group>"; };
+		F6DE799A162CAD9C0038186E /* libmysqlclient_simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient_simulator.a; sourceTree = "<group>"; };
+		F6DE799B162CAD9C0038186E /* libmysqlclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient.a; sourceTree = "<group>"; };
+		F6DE79AC162CB0810038186E /* gcc_builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcc_builtins.h; sourceTree = "<group>"; };
+		F6DE79AD162CB0810038186E /* generic-msvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "generic-msvc.h"; sourceTree = "<group>"; };
+		F6DE79AE162CB0810038186E /* nolock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nolock.h; sourceTree = "<group>"; };
+		F6DE79AF162CB0810038186E /* rwlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwlock.h; sourceTree = "<group>"; };
+		F6DE79B0162CB0810038186E /* x86-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "x86-gcc.h"; sourceTree = "<group>"; };
+		F6DE79B1162CB0810038186E /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		F6DE79B2162CB0810038186E /* config-win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "config-win.h"; sourceTree = "<group>"; };
+		F6DE79B3162CB0810038186E /* decimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decimal.h; sourceTree = "<group>"; };
+		F6DE79B4162CB0810038186E /* errmsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errmsg.h; sourceTree = "<group>"; };
+		F6DE79B5162CB0810038186E /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		F6DE79B6162CB0810038186E /* keycache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keycache.h; sourceTree = "<group>"; };
+		F6DE79B7162CB0810038186E /* lf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lf.h; sourceTree = "<group>"; };
+		F6DE79B8162CB0810038186E /* m_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_ctype.h; sourceTree = "<group>"; };
+		F6DE79B9162CB0810038186E /* m_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_string.h; sourceTree = "<group>"; };
+		F6DE79BA162CB0810038186E /* my_aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_aes.h; sourceTree = "<group>"; };
+		F6DE79BB162CB0810038186E /* my_alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_alarm.h; sourceTree = "<group>"; };
+		F6DE79BC162CB0810038186E /* my_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_alloc.h; sourceTree = "<group>"; };
+		F6DE79BD162CB0810038186E /* my_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_atomic.h; sourceTree = "<group>"; };
+		F6DE79BE162CB0810038186E /* my_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_attribute.h; sourceTree = "<group>"; };
+		F6DE79BF162CB0810038186E /* my_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_base.h; sourceTree = "<group>"; };
+		F6DE79C0162CB0810038186E /* my_bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_bit.h; sourceTree = "<group>"; };
+		F6DE79C1162CB0810038186E /* my_bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_bitmap.h; sourceTree = "<group>"; };
+		F6DE79C2162CB0810038186E /* my_charsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_charsets.h; sourceTree = "<group>"; };
+		F6DE79C3162CB0810038186E /* my_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_config.h; sourceTree = "<group>"; };
+		F6DE79C4162CB0810038186E /* my_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = my_config.h.in; sourceTree = "<group>"; };
+		F6DE79C5162CB0810038186E /* my_dbug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_dbug.h; sourceTree = "<group>"; };
+		F6DE79C6162CB0810038186E /* my_dir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_dir.h; sourceTree = "<group>"; };
+		F6DE79C7162CB0810038186E /* my_getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_getopt.h; sourceTree = "<group>"; };
+		F6DE79C8162CB0810038186E /* my_global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_global.h; sourceTree = "<group>"; };
+		F6DE79C9162CB0810038186E /* my_libwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_libwrap.h; sourceTree = "<group>"; };
+		F6DE79CA162CB0810038186E /* my_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_list.h; sourceTree = "<group>"; };
+		F6DE79CB162CB0810038186E /* my_md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_md5.h; sourceTree = "<group>"; };
+		F6DE79CC162CB0810038186E /* my_net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_net.h; sourceTree = "<group>"; };
+		F6DE79CD162CB0810038186E /* my_no_pthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_no_pthread.h; sourceTree = "<group>"; };
+		F6DE79CE162CB0810038186E /* my_nosys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_nosys.h; sourceTree = "<group>"; };
+		F6DE79CF162CB0810038186E /* my_pthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_pthread.h; sourceTree = "<group>"; };
+		F6DE79D0162CB0810038186E /* my_stacktrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_stacktrace.h; sourceTree = "<group>"; };
+		F6DE79D1162CB0810038186E /* my_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_sys.h; sourceTree = "<group>"; };
+		F6DE79D2162CB0810038186E /* my_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_time.h; sourceTree = "<group>"; };
+		F6DE79D3162CB0810038186E /* my_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_tree.h; sourceTree = "<group>"; };
+		F6DE79D4162CB0810038186E /* my_trie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_trie.h; sourceTree = "<group>"; };
+		F6DE79D5162CB0810038186E /* my_uctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_uctype.h; sourceTree = "<group>"; };
+		F6DE79D6162CB0810038186E /* my_vle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_vle.h; sourceTree = "<group>"; };
+		F6DE79D7162CB0810038186E /* my_xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_xml.h; sourceTree = "<group>"; };
+		F6DE79D8162CB0810038186E /* myisampack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myisampack.h; sourceTree = "<group>"; };
+		F6DE79D9162CB0810038186E /* mysql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql.h; sourceTree = "<group>"; };
+		F6DE79DA162CB0810038186E /* mysql.h.pp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = mysql.h.pp; sourceTree = "<group>"; };
+		F6DE79DB162CB0810038186E /* mysql_com.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_com.h; sourceTree = "<group>"; };
+		F6DE79DC162CB0810038186E /* mysql_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_time.h; sourceTree = "<group>"; };
+		F6DE79DD162CB0810038186E /* mysql_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_version.h; sourceTree = "<group>"; };
+		F6DE79DE162CB0810038186E /* mysql_version.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mysql_version.h.in; sourceTree = "<group>"; };
+		F6DE79DF162CB0810038186E /* mysqld_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysqld_error.h; sourceTree = "<group>"; };
+		F6DE79E1162CB0810038186E /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rijndael.h; sourceTree = "<group>"; };
+		F6DE79E2162CB0810038186E /* mysys_err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysys_err.h; sourceTree = "<group>"; };
+		F6DE79E3162CB0810038186E /* queues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queues.h; sourceTree = "<group>"; };
+		F6DE79E4162CB0810038186E /* service_versions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = service_versions.h; sourceTree = "<group>"; };
+		F6DE79E5162CB0810038186E /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		F6DE79E6162CB0810038186E /* sha2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha2.h; sourceTree = "<group>"; };
+		F6DE79E7162CB0810038186E /* sql_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sql_common.h; sourceTree = "<group>"; };
+		F6DE79E8162CB0810038186E /* sslopt-case.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-case.h"; sourceTree = "<group>"; };
+		F6DE79E9162CB0810038186E /* sslopt-longopts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-longopts.h"; sourceTree = "<group>"; };
+		F6DE79EA162CB0810038186E /* sslopt-vars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-vars.h"; sourceTree = "<group>"; };
+		F6DE79EB162CB0810038186E /* t_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t_ctype.h; sourceTree = "<group>"; };
+		F6DE79EC162CB0810038186E /* thr_alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thr_alarm.h; sourceTree = "<group>"; };
+		F6DE79ED162CB0810038186E /* thr_lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thr_lock.h; sourceTree = "<group>"; };
+		F6DE79EE162CB0810038186E /* typelib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typelib.h; sourceTree = "<group>"; };
+		F6DE79EF162CB0810038186E /* violite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = violite.h; sourceTree = "<group>"; };
+		F6DE79F0162CB0810038186E /* waiting_threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waiting_threads.h; sourceTree = "<group>"; };
+		F6DE79F1162CB0810038186E /* wqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wqueue.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6289BCB161CD81B00F77643 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6440A13161D086500E3CFBE /* libsqlite3.0.dylib in Frameworks */,
+				F6289BD3161CD81B00F77643 /* UIKit.framework in Frameworks */,
+				F6289BD5161CD81B00F77643 /* Foundation.framework in Frameworks */,
+				F6289BD7161CD81B00F77643 /* CoreGraphics.framework in Frameworks */,
+				F656AE7E161E0C8C0079A4C2 /* SMySQL_bundled.framework in Frameworks */,
+				F6DE799D162CAD9C0038186E /* libmysqlclient_device.a in Frameworks */,
+				F6DE799E162CAD9C0038186E /* libmysqlclient_simulator.a in Frameworks */,
+				F6DE799F162CAD9C0038186E /* libmysqlclient.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6289BEE161CD81C00F77643 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6289BF4161CD81C00F77643 /* SenTestingKit.framework in Frameworks */,
+				F6289BF5161CD81C00F77643 /* UIKit.framework in Frameworks */,
+				F6289BF6161CD81C00F77643 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F6289BC3161CD81B00F77643 = {
+			isa = PBXGroup;
+			children = (
+				F6289BD8161CD81B00F77643 /* cloudapp */,
+				F6289BF9161CD81C00F77643 /* cloudappTests */,
+				F6DE7997162CAD6D0038186E /* Resources */,
+				F6289BD1161CD81B00F77643 /* Frameworks */,
+				F6289BCF161CD81B00F77643 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F6289BCF161CD81B00F77643 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6289BCE161CD81B00F77643 /* cloudapp.app */,
+				F6289BF2161CD81C00F77643 /* cloudappTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6289BD1161CD81B00F77643 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F656AE7C161E0C8C0079A4C2 /* libsql */,
+				F6289C0A161CE62000F77643 /* libsqlite3.0.dylib */,
+				F6289BD6161CD81B00F77643 /* CoreGraphics.framework */,
+				F6289BD4161CD81B00F77643 /* Foundation.framework */,
+				F6289BF3161CD81C00F77643 /* SenTestingKit.framework */,
+				F6289BD2161CD81B00F77643 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6289BD8161CD81B00F77643 /* cloudapp */ = {
+			isa = PBXGroup;
+			children = (
+				F676D5011624F262005EE651 /* html */,
+				F6289BE1161CD81B00F77643 /* AppDelegate.h */,
+				F6289BE2161CD81B00F77643 /* AppDelegate.m */,
+				F6289BE4161CD81B00F77643 /* MainStoryboard_iPhone.storyboard */,
+				F6289BE7161CD81B00F77643 /* MainStoryboard_iPad.storyboard */,
+				F6289C13161CE80800F77643 /* Directory.h */,
+				F6289C14161CE80800F77643 /* Directory.m */,
+				F6440A0C161D015700E3CFBE /* DirectoryList.h */,
+				F6440A0D161D015700E3CFBE /* DirectoryList.m */,
+				F6289BEA161CD81B00F77643 /* ViewController.h */,
+				F6289BEB161CD81B00F77643 /* ViewController.m */,
+				F6289C10161CE7B500F77643 /* DirectoryViewController.h */,
+				F6289C11161CE7B500F77643 /* DirectoryViewController.m */,
+				F676D4FE1624EDD7005EE651 /* DetailViewController.h */,
+				F676D4FF1624EDD7005EE651 /* DetailViewController.m */,
+				F6289BD9161CD81B00F77643 /* Supporting Files */,
+			);
+			path = cloudapp;
+			sourceTree = "<group>";
+		};
+		F6289BD9161CD81B00F77643 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6289BDA161CD81B00F77643 /* cloudapp-Info.plist */,
+				F6289BDB161CD81B00F77643 /* InfoPlist.strings */,
+				F6289BDE161CD81B00F77643 /* main.m */,
+				F6289BE0161CD81B00F77643 /* cloudapp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6289BF9161CD81C00F77643 /* cloudappTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6289BFF161CD81C00F77643 /* cloudappTests.h */,
+				F6289C00161CD81C00F77643 /* cloudappTests.m */,
+				F6289BFA161CD81C00F77643 /* Supporting Files */,
+			);
+			path = cloudappTests;
+			sourceTree = "<group>";
+		};
+		F6289BFA161CD81C00F77643 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6289BFB161CD81C00F77643 /* cloudappTests-Info.plist */,
+				F6289BFC161CD81C00F77643 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F656AE7C161E0C8C0079A4C2 /* libsql */ = {
+			isa = PBXGroup;
+			children = (
+				F656AE7D161E0C8C0079A4C2 /* SMySQL_bundled.framework */,
+			);
+			name = libsql;
+			path = cloudapp/libsql;
+			sourceTree = "<group>";
+		};
+		F676D5011624F262005EE651 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				F6A3FA01162F784C00D7B5E3 /* directory.php */,
+				F676D5021624F262005EE651 /* extra.css */,
+				F676D5041624F262005EE651 /* main.html */,
+				F6DE7976162C74BB0038186E /* data.sql */,
+				F6DE7977162C74BB0038186E /* test.db */,
+				F676D5051624F262005EE651 /* page.html */,
+				F676D5061624F262005EE651 /* test.jpg */,
+			);
+			path = html;
+			sourceTree = "<group>";
+		};
+		F6DE7997162CAD6D0038186E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F6DE79AA162CB0810038186E /* include */,
+				F6DE7998162CAD9C0038186E /* libmysql.dylib */,
+				F6DE7999162CAD9C0038186E /* libmysqlclient_device.a */,
+				F6DE799A162CAD9C0038186E /* libmysqlclient_simulator.a */,
+				F6DE799B162CAD9C0038186E /* libmysqlclient.a */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F6DE79AA162CB0810038186E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				F6DE79AB162CB0810038186E /* atomic */,
+				F6DE79B1162CB0810038186E /* base64.h */,
+				F6DE79B2162CB0810038186E /* config-win.h */,
+				F6DE79B3162CB0810038186E /* decimal.h */,
+				F6DE79B4162CB0810038186E /* errmsg.h */,
+				F6DE79B5162CB0810038186E /* hash.h */,
+				F6DE79B6162CB0810038186E /* keycache.h */,
+				F6DE79B7162CB0810038186E /* lf.h */,
+				F6DE79B8162CB0810038186E /* m_ctype.h */,
+				F6DE79B9162CB0810038186E /* m_string.h */,
+				F6DE79BA162CB0810038186E /* my_aes.h */,
+				F6DE79BB162CB0810038186E /* my_alarm.h */,
+				F6DE79BC162CB0810038186E /* my_alloc.h */,
+				F6DE79BD162CB0810038186E /* my_atomic.h */,
+				F6DE79BE162CB0810038186E /* my_attribute.h */,
+				F6DE79BF162CB0810038186E /* my_base.h */,
+				F6DE79C0162CB0810038186E /* my_bit.h */,
+				F6DE79C1162CB0810038186E /* my_bitmap.h */,
+				F6DE79C2162CB0810038186E /* my_charsets.h */,
+				F6DE79C3162CB0810038186E /* my_config.h */,
+				F6DE79C4162CB0810038186E /* my_config.h.in */,
+				F6DE79C5162CB0810038186E /* my_dbug.h */,
+				F6DE79C6162CB0810038186E /* my_dir.h */,
+				F6DE79C7162CB0810038186E /* my_getopt.h */,
+				F6DE79C8162CB0810038186E /* my_global.h */,
+				F6DE79C9162CB0810038186E /* my_libwrap.h */,
+				F6DE79CA162CB0810038186E /* my_list.h */,
+				F6DE79CB162CB0810038186E /* my_md5.h */,
+				F6DE79CC162CB0810038186E /* my_net.h */,
+				F6DE79CD162CB0810038186E /* my_no_pthread.h */,
+				F6DE79CE162CB0810038186E /* my_nosys.h */,
+				F6DE79CF162CB0810038186E /* my_pthread.h */,
+				F6DE79D0162CB0810038186E /* my_stacktrace.h */,
+				F6DE79D1162CB0810038186E /* my_sys.h */,
+				F6DE79D2162CB0810038186E /* my_time.h */,
+				F6DE79D3162CB0810038186E /* my_tree.h */,
+				F6DE79D4162CB0810038186E /* my_trie.h */,
+				F6DE79D5162CB0810038186E /* my_uctype.h */,
+				F6DE79D6162CB0810038186E /* my_vle.h */,
+				F6DE79D7162CB0810038186E /* my_xml.h */,
+				F6DE79D8162CB0810038186E /* myisampack.h */,
+				F6DE79D9162CB0810038186E /* mysql.h */,
+				F6DE79DA162CB0810038186E /* mysql.h.pp */,
+				F6DE79DB162CB0810038186E /* mysql_com.h */,
+				F6DE79DC162CB0810038186E /* mysql_time.h */,
+				F6DE79DD162CB0810038186E /* mysql_version.h */,
+				F6DE79DE162CB0810038186E /* mysql_version.h.in */,
+				F6DE79DF162CB0810038186E /* mysqld_error.h */,
+				F6DE79E0162CB0810038186E /* mysys */,
+				F6DE79E2162CB0810038186E /* mysys_err.h */,
+				F6DE79E3162CB0810038186E /* queues.h */,
+				F6DE79E4162CB0810038186E /* service_versions.h */,
+				F6DE79E5162CB0810038186E /* sha1.h */,
+				F6DE79E6162CB0810038186E /* sha2.h */,
+				F6DE79E7162CB0810038186E /* sql_common.h */,
+				F6DE79E8162CB0810038186E /* sslopt-case.h */,
+				F6DE79E9162CB0810038186E /* sslopt-longopts.h */,
+				F6DE79EA162CB0810038186E /* sslopt-vars.h */,
+				F6DE79EB162CB0810038186E /* t_ctype.h */,
+				F6DE79EC162CB0810038186E /* thr_alarm.h */,
+				F6DE79ED162CB0810038186E /* thr_lock.h */,
+				F6DE79EE162CB0810038186E /* typelib.h */,
+				F6DE79EF162CB0810038186E /* violite.h */,
+				F6DE79F0162CB0810038186E /* waiting_threads.h */,
+				F6DE79F1162CB0810038186E /* wqueue.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		F6DE79AB162CB0810038186E /* atomic */ = {
+			isa = PBXGroup;
+			children = (
+				F6DE79AC162CB0810038186E /* gcc_builtins.h */,
+				F6DE79AD162CB0810038186E /* generic-msvc.h */,
+				F6DE79AE162CB0810038186E /* nolock.h */,
+				F6DE79AF162CB0810038186E /* rwlock.h */,
+				F6DE79B0162CB0810038186E /* x86-gcc.h */,
+			);
+			path = atomic;
+			sourceTree = "<group>";
+		};
+		F6DE79E0162CB0810038186E /* mysys */ = {
+			isa = PBXGroup;
+			children = (
+				F6DE79E1162CB0810038186E /* rijndael.h */,
+			);
+			path = mysys;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6289BCD161CD81B00F77643 /* cloudapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6289C04161CD81C00F77643 /* Build configuration list for PBXNativeTarget "cloudapp" */;
+			buildPhases = (
+				F6289BCA161CD81B00F77643 /* Sources */,
+				F6289BCB161CD81B00F77643 /* Frameworks */,
+				F6289BCC161CD81B00F77643 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cloudapp;
+			productName = cloudapp;
+			productReference = F6289BCE161CD81B00F77643 /* cloudapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6289BF1161CD81C00F77643 /* cloudappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6289C07161CD81C00F77643 /* Build configuration list for PBXNativeTarget "cloudappTests" */;
+			buildPhases = (
+				F6289BED161CD81C00F77643 /* Sources */,
+				F6289BEE161CD81C00F77643 /* Frameworks */,
+				F6289BEF161CD81C00F77643 /* Resources */,
+				F6289BF0161CD81C00F77643 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6289BF8161CD81C00F77643 /* PBXTargetDependency */,
+			);
+			name = cloudappTests;
+			productName = cloudappTests;
+			productReference = F6289BF2161CD81C00F77643 /* cloudappTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6289BC5161CD81B00F77643 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Echo Yu";
+			};
+			buildConfigurationList = F6289BC8161CD81B00F77643 /* Build configuration list for PBXProject "cloudapp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F6289BC3161CD81B00F77643;
+			productRefGroup = F6289BCF161CD81B00F77643 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6289BCD161CD81B00F77643 /* cloudapp */,
+				F6289BF1161CD81C00F77643 /* cloudappTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6289BCC161CD81B00F77643 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6289BDD161CD81B00F77643 /* InfoPlist.strings in Resources */,
+				F6289BE6161CD81B00F77643 /* MainStoryboard_iPhone.storyboard in Resources */,
+				F6289BE9161CD81B00F77643 /* MainStoryboard_iPad.storyboard in Resources */,
+				F676D5081624F262005EE651 /* extra.css in Resources */,
+				F676D50A1624F262005EE651 /* main.html in Resources */,
+				F676D50B1624F262005EE651 /* page.html in Resources */,
+				F676D50C1624F262005EE651 /* test.jpg in Resources */,
+				F6DE7978162C74BB0038186E /* data.sql in Resources */,
+				F6DE7979162C74BB0038186E /* test.db in Resources */,
+				F6DE79F2162CB0810038186E /* my_config.h.in in Resources */,
+				F6DE79F4162CB0810038186E /* mysql_version.h.in in Resources */,
+				F6A3FA02162F784C00D7B5E3 /* directory.php in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6289BEF161CD81C00F77643 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6289BFE161CD81C00F77643 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F6289BF0161CD81C00F77643 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6289BCA161CD81B00F77643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6440A1B161D0DBD00E3CFBE /* Directory.m in Sources */,
+				F6289BDF161CD81B00F77643 /* main.m in Sources */,
+				F6289BEC161CD81B00F77643 /* ViewController.m in Sources */,
+				F6289BE3161CD81B00F77643 /* AppDelegate.m in Sources */,
+				F6289C12161CE7B500F77643 /* DirectoryViewController.m in Sources */,
+				F6440A0E161D015700E3CFBE /* DirectoryList.m in Sources */,
+				F676D5001624EDD7005EE651 /* DetailViewController.m in Sources */,
+				F6DE79F3162CB0810038186E /* mysql.h.pp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6289BED161CD81C00F77643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6289C01161CD81C00F77643 /* cloudappTests.m in Sources */,
+				F6289C15161CE80800F77643 /* Directory.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6289BF8161CD81C00F77643 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6289BCD161CD81B00F77643 /* cloudapp */;
+			targetProxy = F6289BF7161CD81C00F77643 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6289BDB161CD81B00F77643 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6289BDC161CD81B00F77643 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F6289BE4161CD81B00F77643 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6289BE5161CD81B00F77643 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		F6289BE7161CD81B00F77643 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6289BE8161CD81B00F77643 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		F6289BFC161CD81C00F77643 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6289BFD161CD81C00F77643 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6289C02161CD81C00F77643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6289C03161CD81C00F77643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6289C05161CD81C00F77643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/cloudapp/libsql\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cloudapp/cloudapp-Prefix.pch";
+				INFOPLIST_FILE = "cloudapp/cloudapp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F6289C06161CD81C00F77643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/cloudapp/libsql\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cloudapp/cloudapp-Prefix.pch";
+				INFOPLIST_FILE = "cloudapp/cloudapp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F6289C08161CD81C00F77643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cloudapp.app/cloudapp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cloudapp/cloudapp-Prefix.pch";
+				INFOPLIST_FILE = "cloudappTests/cloudappTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F6289C09161CD81C00F77643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cloudapp.app/cloudapp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cloudapp/cloudapp-Prefix.pch";
+				INFOPLIST_FILE = "cloudappTests/cloudappTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6289BC8161CD81B00F77643 /* Build configuration list for PBXProject "cloudapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6289C02161CD81C00F77643 /* Debug */,
+				F6289C03161CD81C00F77643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6289C04161CD81C00F77643 /* Build configuration list for PBXNativeTarget "cloudapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6289C05161CD81C00F77643 /* Debug */,
+				F6289C06161CD81C00F77643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6289C07161CD81C00F77643 /* Build configuration list for PBXNativeTarget "cloudappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6289C08161CD81C00F77643 /* Debug */,
+				F6289C09161CD81C00F77643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6289BC5161CD81B00F77643 /* Project object */;
+}

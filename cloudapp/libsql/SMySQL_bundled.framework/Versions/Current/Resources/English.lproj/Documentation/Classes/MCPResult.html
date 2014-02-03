@@ -1,0 +1,413 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPResult">MCPResult</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSObject</DD>
+</DL></blockquote>
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPResult.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+<CODE> $Id: MCPResult.m,v 1.5 2004/08/04 23:24:06 sergecohen Exp $ </CODE><P>
+
+Hold the results of a query to a MySQL database server. It correspond to the MYSQL_RES structure of the C API, and to the statement handle of the PERL DBI/DBD.<P>
+
+Uses the <CODE>mysql_store_result()</CODE> function from the C API.<P>
+
+This object is generated only by a MCPConnection object, in this way (see <B>MCPConnection</B> documentation):<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;MCPConnection *theConnec = [MCPConnection alloc]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;MCPResult *theRes; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;NSDictionary *theDict; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;NSArray *theColNames; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;int i, j;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;theConnec = [theConnec initToHost:@&quot;albert.com&quot; withLogin:@&quot;toto&quot; password:@&quot;albert&quot; usingPort:0]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[theConnec selectDB:@&quot;db1&quot;]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;theRes = [theConnec queryString:@&quot;select * from table1&quot;]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;theColNames = [theRes fetchFiedlsName]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;i = 0; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;while (theDict = [theRes fetchRowAsDictionary]){&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@&quot;Row : <I>d</I>\n&quot;, i); <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (j=0; j&lt;[theColNames count]; j++) {&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@&quot; Field : %@, contain : %@\n&quot;, [theColNames objectAtIndex:j], [theDict objectForKey:[theColNames objectAtIndex:j]]); <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>MYSQL_RES *<B>mResult</B>;</CODE><BR>
+		<CODE>NSArray *<B>mNames</B>;</CODE><BR>
+		<CODE>NSDictionary *<B>mMySQLLocales</B>;</CODE><BR>
+		<CODE>NSStringEncoding <B>mEncoding</B>;</CODE><BR>
+		<CODE>unsigned int <B>mNumOfFields</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>mResult</TD><TD>The MYSQL_RES structure of the C API</TD></TR>
+	
+		<TR><TD>mNames</TD><TD>An NSArray holding the name of the columns</TD></TR>
+	
+		<TR><TD>mMySQLLocales</TD><TD>A Locales dictionary to define the locales of MySQL</TD></TR>
+	
+		<TR><TD>mEncoding</TD><TD>The encoding used by MySQL server, to ISO-1 default</TD></TR>
+	
+		<TR><TD>mNumOfFields</TD><TD>The number of fields in the result</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Class maintenance
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ initialize">+ initialize</A></DD>
+		
+		</DL>
+	
+		
+			Init used <B>only</B> by <B>MCPConnection</B>
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- initWithMySQLPtr:encoding:">- initWithMySQLPtr:encoding:</A></DD>
+		
+			<DD> <A HREF="#- initWithResPtr:encoding:">- initWithResPtr:encoding:</A></DD>
+		
+			<DD> <A HREF="#- init">- init</A></DD>
+		
+		</DL>
+	
+		
+			General info on the result
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- numOfRows">- numOfRows</A></DD>
+		
+			<DD> <A HREF="#- numOfFields">- numOfFields</A></DD>
+		
+		</DL>
+	
+		
+			Getting the rows
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- dataSeek:">- dataSeek:</A></DD>
+		
+			<DD> <A HREF="#- fetchRowAsType:">- fetchRowAsType:</A></DD>
+		
+			<DD> <A HREF="#- fetchRowAsArray">- fetchRowAsArray</A></DD>
+		
+			<DD> <A HREF="#- fetchRowAsDictionary">- fetchRowAsDictionary</A></DD>
+		
+		</DL>
+	
+		
+			Getting information on columns
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- fetchFieldsName">- fetchFieldsName</A></DD>
+		
+			<DD> <A HREF="#- fetchTypesAsType:">- fetchTypesAsType:</A></DD>
+		
+			<DD> <A HREF="#- fetchTypesAsArray">- fetchTypesAsArray</A></DD>
+		
+			<DD> <A HREF="#- fetchTypesAsDictionary">- fetchTypesAsDictionary</A></DD>
+		
+			<DD> <A HREF="#- fetchFlagsAtIndex:">- fetchFlagsAtIndex:</A></DD>
+		
+			<DD> <A HREF="#- fetchFlagsForKey:">- fetchFlagsForKey:</A></DD>
+		
+			<DD> <A HREF="#- isBlobAtIndex:">- isBlobAtIndex:</A></DD>
+		
+			<DD> <A HREF="#- isBlobForKey:">- isBlobForKey:</A></DD>
+		
+		</DL>
+	
+		
+			Text data convertion to string
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- stringWithText:">- stringWithText:</A></DD>
+		
+		</DL>
+	
+		
+			Utility method
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- description">- description</A></DD>
+		
+		</DL>
+	
+		
+			End of the scope...
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- dealloc">- dealloc</A></DD>
+		
+		</DL>
+	
+		
+			Private methods, internal use only
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- cStringFromString:">- cStringFromString:</A></DD>
+		
+			<DD> <A HREF="#- stringWithCString:">- stringWithCString:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ initialize"></A><H3><A NAME="//apple_ref/occ/clm/MCPResult/initialize">initialize</A></H3>
+		<CODE>+ (void)<B>initialize</B>
+		</CODE><P>
+		Initialize the class version to 2.3.1
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- cStringFromString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/cStringFromString:">cStringFromString:</A></H3><P>
+		<CODE>- (const char *)<B>cStringFromString:</B>(NSString *)<EM>theString</EM>
+			
+		</CODE><P>
+		For internal use only. Transform a NSString to a C type string (ended with \0) using ethe character set from the MCPConnection. 
+Lossy conversions are enabled.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dataSeek:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/dataSeek:">dataSeek:</A></H3><P>
+		<CODE>- (void)<B>dataSeek:</B>(my_ulonglong)<EM>row</EM>
+			
+		</CODE><P>
+		Go to a precise <I>row</I> in the selected result. 0 is the very first <I>row</I>
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dealloc"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/dealloc">dealloc</A></H3><P>
+		<CODE>- (void)<B>dealloc</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- description"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/description">description</A></H3><P>
+		<CODE>- (NSString *)<B>description</B>
+		</CODE><P>
+		Return a (long) string containing the table of results, first line being the fields name, next line(s) the row(s). Useful to have NSLog logging a MCPResult (example).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchFieldsName"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchFieldsName">fetchFieldsName</A></H3><P>
+		<CODE>- (NSArray *)<B>fetchFieldsName</B>
+		</CODE><P>
+		Generate the mNames if not already generated, and return it.<P>
+
+mNames is a NSArray holding the names of the fields(columns) of the results
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchFlagsAtIndex:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchFlagsAtIndex:">fetchFlagsAtIndex:</A></H3><P>
+		<CODE>- (unsigned int)<B>fetchFlagsAtIndex:</B>(unsigned int)<EM>index</EM>
+			
+		</CODE><P>
+		Return the MySQL flags of the column at the given <I>index</I>... Can be used to check if a number is signed or not...
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchFlagsForKey:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchFlagsForKey:">fetchFlagsForKey:</A></H3><P>
+		<CODE>- (unsigned int)<B>fetchFlagsForKey:</B>(NSString *)<EM>key</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchRowAsArray"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchRowAsArray">fetchRowAsArray</A></H3><P>
+		<CODE>- (NSArray *)<B>fetchRowAsArray</B>
+		</CODE><P>
+		Return the next row of the result as an array, the index in select field order, the object a proper object for handling the information in the field (NSString, NSNumber ...).<P>
+
+Just a <B>typed</B> wrapper for method <CODE>fetchRosAsType:</CODE> (with arg MCPTypeArray).<P>
+
+NB: Returned object is immutable.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchRowAsDictionary"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchRowAsDictionary">fetchRowAsDictionary</A></H3><P>
+		<CODE>- (NSDictionary *)<B>fetchRowAsDictionary</B>
+		</CODE><P>
+		Return the next row of the result as a dictionary, the key being the field name, the object a proper object for handling the information in the field (NSString, NSNumber ...).<P>
+
+Just a <B>typed</B> wrapper for method <CODE>fetchRosAsType:</CODE> (with arg MCPTypeDictionary).<P>
+
+NB: Returned object is immutable.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchRowAsType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchRowAsType:">fetchRowAsType:</A></H3><P>
+		<CODE>- (id)<B>fetchRowAsType:</B>(MCPReturnType)<EM>aType</EM>
+			
+		</CODE><P>
+		Return the next row of the result as a collection of type defined by <I>aType</I> (namely MCPTypeArray or MCPTypeDictionary). Each field of the row is made into a proper object to hold the info (NSNumber -indeed MCPNumber, to keep signedness-, NSString...).<P>
+
+This method returned directly the <B>mutable</B> object generated while going through all the columns
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchTypesAsArray"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchTypesAsArray">fetchTypesAsArray</A></H3><P>
+		<CODE>- (NSArray *)<B>fetchTypesAsArray</B>
+		</CODE><P>
+		Return an array of the fields' types.<P>
+
+NB: Returned object is immutable.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchTypesAsDictionary"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchTypesAsDictionary">fetchTypesAsDictionary</A></H3><P>
+		<CODE>- (NSDictionary *)<B>fetchTypesAsDictionary</B>
+		</CODE><P>
+		Return a dictionnary of the fields' types (keys are the fields' names).<P>
+
+NB: Returned object is immutable.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- fetchTypesAsType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/fetchTypesAsType:">fetchTypesAsType:</A></H3><P>
+		<CODE>- (id)<B>fetchTypesAsType:</B>(MCPReturnType)<EM>aType</EM>
+			
+		</CODE><P>
+		Return a collection of the fields's type. The type of collection is choosen by the <I>aType</I> variable (MCPTypeArray or MCPTypeDictionary).<P>
+
+This method returned directly the <B>mutable</B> object generated while going through all the columns
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- init"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/init">init</A></H3><P>
+		<CODE>- (id)<B>init</B>
+		</CODE><P>
+		Empty init, normaly of NO use to the user, again, MCPResult should be made through calls to MCPConnection
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithMySQLPtr:encoding:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/initWithMySQLPtr:encoding:">initWithMySQLPtr:encoding:</A></H3><P>
+		<CODE>- (id)<B>initWithMySQLPtr:</B>(MYSQL *)<EM>mySQLPtr</EM> <B>encoding:</B>(NSStringEncoding)<EM>theEncoding</EM>
+			
+		</CODE><P>
+		initialise a MCPResult, it is used internally by MCPConnection <CODE>queryString:</CODE> method: the only proper way to get a running MCPResult object.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initWithResPtr:encoding:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/initWithResPtr:encoding:">initWithResPtr:encoding:</A></H3><P>
+		<CODE>- (id)<B>initWithResPtr:</B>(MYSQL_RES *)<EM>mySQLResPtr</EM> <B>encoding:</B>(NSStringEncoding)<EM>theEncoding</EM>
+			
+		</CODE><P>
+		This metod it is used internally by MCPConnection object when it have already a MYSQL_RES object to initialise MCPResult object. 
+Initialise a MCPResult with the MYSQL_RES pointer (returned by such a function as mysql_list_dbs). 
+NB: MCPResult should be made by using one of the method of MCPConnection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- isBlobAtIndex:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/isBlobAtIndex:">isBlobAtIndex:</A></H3><P>
+		<CODE>- (BOOL)<B>isBlobAtIndex:</B>(unsigned int)<EM>index</EM>
+			
+		</CODE><P>
+		Return YES if the field with the given <I>index</I> is a BLOB. It should be used to discriminates between BLOBs and TEXTs.<P>
+
+<B>DEPRECATED</B>, This method is not consistent with the C API which is supposed to return YES for BOTH text and blob (and BTW is also deprecated)...<P>
+
+<B>NOTE</B> That the current version handles properly TEXT, and returns those as NSString (and not NSData as it used to be).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- isBlobForKey:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/isBlobForKey:">isBlobForKey:</A></H3><P>
+		<CODE>- (BOOL)<B>isBlobForKey:</B>(NSString *)<EM>key</EM>
+			
+		</CODE><P>
+		Return YES if the field (by name) with the given index is a BLOB. It should be used to discriminates between BLOBs and TEXTs.<P>
+
+<B>DEPRECATED</B>, This method is not consistent with the C API which is supposed to return YES for BOTH text and blob (and BTW is also deprecated)...<P>
+
+<B>NOTE</B> That the current version handles properly TEXT, and returns those as NSString (and not NSData as it used to be).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- numOfFields"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/numOfFields">numOfFields</A></H3><P>
+		<CODE>- (unsigned int)<B>numOfFields</B>
+		</CODE><P>
+		Return the number of fields selected by the query. As a side effect it forces an update of the number of fields.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- numOfRows"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/numOfRows">numOfRows</A></H3><P>
+		<CODE>- (my_ulonglong)<B>numOfRows</B>
+		</CODE><P>
+		Return the number of rows selected by the query.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stringWithCString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/stringWithCString:">stringWithCString:</A></H3><P>
+		<CODE>- (NSString *)<B>stringWithCString:</B>(const char *)<EM>theCString</EM>
+			
+		</CODE><P>
+		Return a NSString from a C style string encoded with the character set of theMCPConnection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stringWithText:"></A><H3><A NAME="//apple_ref/occ/instm/MCPResult/stringWithText:">stringWithText:</A></H3><P>
+		<CODE>- (NSString *)<B>stringWithText:</B>(NSData *)<EM>theTextData</EM>
+			
+		</CODE><P>
+		Use the string encoding to convert the returned NSData to a string (for a TEXT field)
+	
+
+
+
+
+<P><HR>
+Version 1.2 Copyright &copy;2004 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:27 2004
+<P>
+</BODY></HTML>

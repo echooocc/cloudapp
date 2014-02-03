@@ -1,0 +1,611 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPConnection">MCPConnection</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSObject</DD>
+</DL></blockquote>
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPConnection.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+<CODE> $Id: MCPConnection.m,v 1.5 2004/08/04 23:24:06 sergecohen Exp $ </CODE> 
+<CODE> $Author: sergecohen $ </CODE><P>
+
+This class is used to keep a connection with a MySQL server, it correspond to the MYSQL structure of the C API, or the database handle of the PERL DBI/DBD interface.<P>
+
+You have to start any work on a MySQL server by getting a working MCPConnection object.<P>
+
+Most likely you will use this kind of code:<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;MCPConnection *theConnec = [MCPConnection alloc]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;MCPResult *theRes;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;theConnec = [theConnec initToHost:@&quot;albert.com&quot; withLogin:@&quot;toto&quot; password:@&quot;albert&quot; usingPort:0]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[theConnec selectDB:@&quot;db1&quot;]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;theRes = [theConnec queryString:@&quot;select * from table1&quot;]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;... <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE><P>
+
+<B>NOTE</B> Failing to properly release your MCPConnection(s) object might cause a MySQL crash!!! (recovered if the 
+server was started using mysqld_safe).
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Global Variables</H2>
+	<blockquote>
+	
+		
+		<H4>Synopsis:</H4>
+		
+			<CODE>const unsigned int <B><A NAME="//apple_ref/c/data/kMCPConnectionDefaultOption">kMCPConnectionDefaultOption</A></B>;</CODE><BR>
+		
+			<CODE>const char *<B><A NAME="//apple_ref/c/data/kMCPConnectionDefaultSocket">kMCPConnectionDefaultSocket</A></B>;</CODE><BR>
+		
+			<CODE>const unsigned int <B><A NAME="//apple_ref/c/data/kMCPConnectionNotInited">kMCPConnectionNotInited</A></B>;</CODE><BR>
+		
+		
+	
+	</blockquote>
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>MYSQL *<B>mConnection</B>;</CODE><BR>
+		<CODE>BOOL <B>mConnected</B>;</CODE><BR>
+		<CODE>NSStringEncoding <B>mEncoding</B>;</CODE><BR>
+		<CODE>unsigned int <B>mConnectionFlags</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>mConnection</TD><TD>The inited MySQL connection</TD></TR>
+	
+		<TR><TD>mConnected</TD><TD>Reflect the fact that the connection is already in place or not</TD></TR>
+	
+		<TR><TD>mEncoding</TD><TD>The encoding used by MySQL server, to ISO-1 default</TD></TR>
+	
+		<TR><TD>mConnectionFlags</TD><TD>The flags to be used for the connection to the database.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Getting default of MySQL
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ getMySQLLocales">+ getMySQLLocales</A></DD>
+		
+			<DD> <A HREF="#+ encodingForMySQLEncoding:">+ encodingForMySQLEncoding:</A></DD>
+		
+			<DD> <A HREF="#+ defaultMySQLEncoding">+ defaultMySQLEncoding</A></DD>
+		
+		</DL>
+	
+		
+			Class maintenance
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ initialize">+ initialize</A></DD>
+		
+		</DL>
+	
+		
+			Initialisation
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- init">- init</A></DD>
+		
+			<DD> <A HREF="#- initToHost:withLogin:password:usingPort:">- initToHost:withLogin:password:usingPort:</A></DD>
+		
+			<DD> <A HREF="#- initToSocket:withLogin:password:">- initToSocket:withLogin:password:</A></DD>
+		
+			<DD> <A HREF="#- setConnectionOption:toValue:">- setConnectionOption:toValue:</A></DD>
+		
+			<DD> <A HREF="#- connectWithLogin:password:host:port:socket:">- connectWithLogin:password:host:port:socket:</A></DD>
+		
+			<DD> <A HREF="#- selectDB:">- selectDB:</A></DD>
+		
+		</DL>
+	
+		
+			Errors information
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- getLastErrorMessage">- getLastErrorMessage</A></DD>
+		
+			<DD> <A HREF="#- getLastErrorID">- getLastErrorID</A></DD>
+		
+			<DD> <A HREF="#- isConnected">- isConnected</A></DD>
+		
+			<DD> <A HREF="#- checkConnection">- checkConnection</A></DD>
+		
+		</DL>
+	
+		
+			Queries
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- prepareBinaryData:">- prepareBinaryData:</A></DD>
+		
+			<DD> <A HREF="#- prepareString:">- prepareString:</A></DD>
+		
+			<DD> <A HREF="#- quoteObject:">- quoteObject:</A></DD>
+		
+			<DD> <A HREF="#- queryString:">- queryString:</A></DD>
+		
+			<DD> <A HREF="#- affectedRows">- affectedRows</A></DD>
+		
+			<DD> <A HREF="#- insertId">- insertId</A></DD>
+		
+		</DL>
+	
+		
+			Getting description of the database structure
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- listDBs">- listDBs</A></DD>
+		
+			<DD> <A HREF="#- listDBsLike:">- listDBsLike:</A></DD>
+		
+			<DD> <A HREF="#- listTables">- listTables</A></DD>
+		
+			<DD> <A HREF="#- listTablesLike:">- listTablesLike:</A></DD>
+		
+			<DD> <A HREF="#- listTablesFromDB:like:">- listTablesFromDB:like:</A></DD>
+		
+			<DD> <A HREF="#- listFieldsFromTable:">- listFieldsFromTable:</A></DD>
+		
+			<DD> <A HREF="#- listFieldsFromTable:like:">- listFieldsFromTable:like:</A></DD>
+		
+		</DL>
+	
+		
+			Server information and control
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- clientInfo">- clientInfo</A></DD>
+		
+			<DD> <A HREF="#- hostInfo">- hostInfo</A></DD>
+		
+			<DD> <A HREF="#- serverInfo">- serverInfo</A></DD>
+		
+			<DD> <A HREF="#- protoInfo">- protoInfo</A></DD>
+		
+			<DD> <A HREF="#- listProcesses">- listProcesses</A></DD>
+		
+			<DD> <A HREF="#- killProcess:">- killProcess:</A></DD>
+		
+		</DL>
+	
+		
+			Disconnection
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- disconnect">- disconnect</A></DD>
+		
+			<DD> <A HREF="#- dealloc">- dealloc</A></DD>
+		
+		</DL>
+	
+		
+			String encoding concerns (c string type to NSString). 
+It's unlikely that users of the framework needs to use these methods which are used internally
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setEncoding:">- setEncoding:</A></DD>
+		
+			<DD> <A HREF="#- encoding">- encoding</A></DD>
+		
+			<DD> <A HREF="#- cStringFromString:">- cStringFromString:</A></DD>
+		
+			<DD> <A HREF="#- stringWithCString:">- stringWithCString:</A></DD>
+		
+		</DL>
+	
+		
+			Text data convertion to string
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- stringWithText:">- stringWithText:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ defaultMySQLEncoding"></A><H3><A NAME="//apple_ref/occ/clm/MCPConnection/defaultMySQLEncoding">defaultMySQLEncoding</A></H3>
+		<CODE>+ (NSStringEncoding)<B>defaultMySQLEncoding</B>
+		</CODE><P>
+		Returns the default charset of the library mysqlclient used.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ encodingForMySQLEncoding:"></A><H3><A NAME="//apple_ref/occ/clm/MCPConnection/encodingForMySQLEncoding:">encodingForMySQLEncoding:</A></H3>
+		<CODE>+ (NSStringEncoding)<B>encodingForMySQLEncoding:</B>(const char *)<EM>mysqlEncoding</EM>
+			
+		</CODE><P>
+		Gets a proper NSStringEncoding according to the given MySQL charset.<P>
+
+MySQL 4.0 offers this charsets: 
+big5 cp1251 cp1257 croat czech danish dec8 dos estonia euc_kr gb2312 gbk german1 greek hebrew hp8 hungarian koi8_ru koi8_ukr latin1 latin1_de latin2 latin5 sjis swe7 tis620 ujis usa7 win1250 win1251ukr<P>
+
+WARNING : incomplete implementation. Please, send your fixes.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ getMySQLLocales"></A><H3><A NAME="//apple_ref/occ/clm/MCPConnection/getMySQLLocales">getMySQLLocales</A></H3>
+		<CODE>+ (NSDictionary *)<B>getMySQLLocales</B>
+		</CODE><P>
+		Gets a proper Locale dictionary to use formater to parse strings from MySQL. 
+For example strings representing dates should give a proper Locales for use with methods such as NSDate::dateWithNaturalLanguageString: locales:
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="+ initialize"></A><H3><A NAME="//apple_ref/occ/clm/MCPConnection/initialize">initialize</A></H3>
+		<CODE>+ (void)<B>initialize</B>
+		</CODE><P>
+		Initialize the class version to 2.3.1
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- affectedRows"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/affectedRows">affectedRows</A></H3><P>
+		<CODE>- (my_ulonglong)<B>affectedRows</B>
+		</CODE><P>
+		Returns the number of affected rows by the last query.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- cStringFromString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/cStringFromString:">cStringFromString:</A></H3><P>
+		<CODE>- (const char *)<B>cStringFromString:</B>(NSString *)<EM>theString</EM>
+			
+		</CODE><P>
+		For internal use only. Transforms a NSString to a C type string (ending with \0) using the character set from the MCPConnection. 
+Lossy conversions are enabled.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- checkConnection"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/checkConnection">checkConnection</A></H3><P>
+		<CODE>- (BOOL)<B>checkConnection</B>
+		</CODE><P>
+		Checks if the connection to the server is still on. 
+If not, tries to reconnect (changing no parameters from the MYSQL pointer). 
+This method just uses mysql_ping().
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- clientInfo"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/clientInfo">clientInfo</A></H3><P>
+		<CODE>- (NSString *)<B>clientInfo</B>
+		</CODE><P>
+		Returns a string giving the client library version.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- connectWithLogin:password:host:port:socket:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/connectWithLogin:password:host:port:socket:">connectWithLogin:password:host:port:socket:</A></H3><P>
+		<CODE>- (BOOL)<B>connectWithLogin:</B>(NSString *)<EM>login</EM> <B>password:</B>(NSString *)<EM>pass</EM> <B>host:</B>(NSString *)<EM>host</EM> <B>port:</B>(int)<EM>port</EM> <B>socket:</B>(NSString *)<EM>socket</EM>
+			
+		</CODE><P>
+		The method used by <CODE>initToHost:withLogin:password:usingPort:</CODE> and <CODE>initToSocket:withLogin:password:</CODE>. Same information and use of the parameters:<P>
+
+- <I>login</I> is the user name 
+- <I>pass</I> is the password corresponding to the user name 
+- <I>host</I> is the hostname or IP adress 
+- <I>port</I> is the TCP <I>port</I> to use to connect. If <I>port</I> = 0, uses the default <I>port</I> from mysql.h 
+- <I>socket</I> is the path to the <I>socket</I> (for the localhost)<P>
+
+The <I>socket</I> is used if the <I>host</I> is set to <CODE>@&quot;localhost&quot;</CODE>, to an empty or a <CODE>nil</CODE> string 
+For the moment the implementation might not be safe if you have a <B>nil</B> pointer to one of the NSString* variables (underestand: I don't know what the result will be).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dealloc"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/dealloc">dealloc</A></H3><P>
+		<CODE>- (void)<B>dealloc</B>
+		</CODE><P>
+		The standard deallocation method for MCPConnection objects.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- disconnect"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/disconnect">disconnect</A></H3><P>
+		<CODE>- (void)<B>disconnect</B>
+		</CODE><P>
+		Disconnects a connected MCPConnection object; used by <CODE>dealloc:</CODE> method.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- encoding"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/encoding">encoding</A></H3><P>
+		<CODE>- (NSStringEncoding)<B>encoding</B>
+		</CODE><P>
+		Gets the encoding for the connection
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getLastErrorID"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/getLastErrorID">getLastErrorID</A></H3><P>
+		<CODE>- (unsigned int)<B>getLastErrorID</B>
+		</CODE><P>
+		Returns the ErrorID of the last MySQL error on the connection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getLastErrorMessage"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/getLastErrorMessage">getLastErrorMessage</A></H3><P>
+		<CODE>- (NSString *)<B>getLastErrorMessage</B>
+		</CODE><P>
+		Returns a string with the last MySQL error message on the connection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- hostInfo"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/hostInfo">hostInfo</A></H3><P>
+		<CODE>- (NSString *)<B>hostInfo</B>
+		</CODE><P>
+		Returns a string giving information on the host of the DB server.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- init"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/init">init</A></H3><P>
+		<CODE>- (id)<B>init</B>
+		</CODE><P>
+		Initialise a MySQLConnection without making a connection, most likely useless, except with <CODE>setConnectionOption:withArgument:</CODE>.<P>
+
+Because this method is not making a connection to any MySQL server, it can not know already what the DB server encoding will be, 
+hence the encoding is set to some default (at present this is NSISOLatin1StringEncoding). Obviously this is reset to a proper 
+value as soon as a DB connection is performed.<P>
+
+<B>I AM CURRENTLY NOT TESTING THIS METHOD, so it is likely to be buggy</B>... I'd be SUPER happy to ear/read your feed-back on this.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initToHost:withLogin:password:usingPort:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/initToHost:withLogin:password:usingPort:">initToHost:withLogin:password:usingPort:</A></H3><P>
+		<CODE>- (id)<B>initToHost:</B>(NSString *)<EM>host</EM> <B>withLogin:</B>(NSString *)<EM>login</EM> <B>password:</B>(NSString *)<EM>pass</EM> <B>usingPort:</B>(int)<EM>port</EM>
+			
+		</CODE><P>
+		Initialise a connection using a <B>TCP/IP connection</B> with the given parameters (except if <I>host</I> is set to <CODE>localhost</CODE>, in which case uses the default)<P>
+
+- <I>host</I> is the hostname or IP adress 
+- <I>login</I> is the user name 
+- <I>pass</I> is the password corresponding to the user name 
+- <I>port</I> is the TCP <I>port</I> to use to connect. If <I>port</I> = 0, uses the default <I>port</I> from mysql.h
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- initToSocket:withLogin:password:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/initToSocket:withLogin:password:">initToSocket:withLogin:password:</A></H3><P>
+		<CODE>- (id)<B>initToSocket:</B>(NSString *)<EM>socket</EM> <B>withLogin:</B>(NSString *)<EM>login</EM> <B>password:</B>(NSString *)<EM>pass</EM>
+			
+		</CODE><P>
+		Initialise a connection using a <B>unix <I>socket</I></B> with the given parameters<P>
+
+- <I>socket</I> is the path to the <I>socket</I> 
+- <I>login</I> is the user name 
+- <I>pass</I> is the password corresponding to the user name
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- insertId"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/insertId">insertId</A></H3><P>
+		<CODE>- (my_ulonglong)<B>insertId</B>
+		</CODE><P>
+		If the last query was an insert in a table having a autoindex column, returns the <B>id</B> (autoindexed field) of the last row inserted.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- isConnected"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/isConnected">isConnected</A></H3><P>
+		<CODE>- (BOOL)<B>isConnected</B>
+		</CODE><P>
+		Returns YES if the MCPConnection is connected to a DB, NO otherwise.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- killProcess:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/killProcess:">killProcess:</A></H3><P>
+		<CODE>- (BOOL)<B>killProcess:</B>(unsigned long)<EM>pid</EM>
+			
+		</CODE><P>
+		Kills the process with the given <I>pid</I>. 
+The users needs the <CODE>Process_priv</CODE> privilege.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listDBs"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listDBs">listDBs</A></H3><P>
+		<CODE>- (MCPResult *)<B>listDBs</B>
+		</CODE><P>
+		Just a fast wrapper for the more complex <CODE>listDBsWithPattern:</CODE> method.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listDBsLike:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listDBsLike:">listDBsLike:</A></H3><P>
+		<CODE>- (MCPResult *)<B>listDBsLike:</B>(NSString *)<EM>dbsName</EM>
+			
+		</CODE><P>
+		Returns a list of database which name correspond to the SQL regular expression in 'pattern'. 
+The comparison is done with wild card extension : % and _. 
+The result should correspond to the queryString:@&quot;SHOW databases [LIKE wild]&quot;; but implemented with mysql_list_dbs. 
+If an empty string or <B>nil</B> is passed as pattern, all databases will be shown.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listFieldsFromTable:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listFieldsFromTable:">listFieldsFromTable:</A></H3><P>
+		<CODE>- (MCPResult *)<B>listFieldsFromTable:</B>(NSString *)<EM>tableName</EM>
+			
+		</CODE><P>
+		Just a fast wrapper for the more complex list <CODE>listFieldsWithPattern:forTable:</CODE> method.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listFieldsFromTable:like:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listFieldsFromTable:like:">listFieldsFromTable:like:</A></H3><P>
+		<CODE>- (MCPResult *)<B>listFieldsFromTable:</B>(NSString *)<EM>tableName</EM> <B>like:</B>(NSString *)<EM>fieldsName</EM>
+			
+		</CODE><P>
+		Show all the fields of the table <I>tableName</I> which name correspond to pattern (with wild card expansion : %,_). 
+Indeed, and as recommanded from mysql reference, this method is NOT using mysql_list_fields but the <CODE>queryString:</CODE> method. 
+If an empty string or <B>nil</B> is passed as <I>fieldsName</I>, all fields (of <I>tableName</I>) will be returned.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listProcesses"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listProcesses">listProcesses</A></H3><P>
+		<CODE>- (MCPResult *)<B>listProcesses</B>
+		</CODE><P>
+		Lists active process
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listTables"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listTables">listTables</A></H3><P>
+		<CODE>- (MCPResult *)<B>listTables</B>
+		</CODE><P>
+		Make sure a DB is selected (with <CODE>selectDB:</CODE> method) first.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listTablesFromDB:like:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listTablesFromDB:like:">listTablesFromDB:like:</A></H3><P>
+		<CODE>- (MCPResult *)<B>listTablesFromDB:</B>(NSString *)<EM>dbName</EM> <B>like:</B>(NSString *)<EM>tablesName</EM>
+			
+		</CODE><P>
+		List tables in DB specified by <I>dbName</I> and corresponding to pattern. 
+This method indeed issues a <CODE>SHOW TABLES FROM dbName LIKE ...</CODE> query to the server. 
+This is done this way to make sure the selected DB is not changed by this method.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- listTablesLike:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/listTablesLike:">listTablesLike:</A></H3><P>
+		<CODE>- (MCPResult *)<B>listTablesLike:</B>(NSString *)<EM>tablesName</EM>
+			
+		</CODE><P>
+		From within a database, give back the list of table which name correspond to <I>tablesName</I> (with wild card %, _ extension). Correspond to queryString:@&quot;SHOW tables [LIKE wild]&quot;; uses mysql_list_tables function. 
+If an empty string or <B>nil</B> is passed as <I>tablesName</I>, all tables will be shown. 
+WARNING: <B>produce an error if no databases are selected</B> (with <CODE>selectDB:</CODE> for example).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- prepareBinaryData:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/prepareBinaryData:">prepareBinaryData:</A></H3><P>
+		<CODE>- (NSString *)<B>prepareBinaryData:</B>(NSData *)<EM>theData</EM>
+			
+		</CODE><P>
+		Takes a NSData object and transform it in a proper string for sending to the server in between quotes.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- prepareString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/prepareString:">prepareString:</A></H3><P>
+		<CODE>- (NSString *)<B>prepareString:</B>(NSString *)<EM>theString</EM>
+			
+		</CODE><P>
+		Takes a string and escape any special character (like single quote : ') so that the string can be used directly in a query.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- protoInfo"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/protoInfo">protoInfo</A></H3><P>
+		<CODE>- (NSNumber *)<B>protoInfo</B>
+		</CODE><P>
+		Returns the number of the protocole used to transfer info from server to client
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- queryString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/queryString:">queryString:</A></H3><P>
+		<CODE>- (MCPResult *)<B>queryString:</B>(NSString *)<EM>query</EM>
+			
+		</CODE><P>
+		Takes a <I>query</I> string and return an MCPResult object holding the result of the <I>query</I>. 
+The returned MCPResult is not retained, the client is responsible for that (it's autoreleased before being returned). If no field are present in the result (like in an insert <I>query</I>), will return <B>nil</B> (<B>difference from previous version implementation</B>). Though, if their is at least one field the result will be non <B>nil</B> (even if no row are selected).<P>
+
+Note that if you want to use this method with binary data (in the <I>query</I>), you should use <CODE>prepareBinaryData:</CODE> to include the binary data in the <I>query</I> string. Also if you want to include in your <I>query</I> a string containing any special character (\, ', &quot; ...) then you should use <CODE>prepareString</CODE>.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- quoteObject:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/quoteObject:">quoteObject:</A></H3><P>
+		<CODE>- (NSString *)<B>quoteObject:</B>(id)<EM>theObject</EM>
+			
+		</CODE><P>
+		Use the class of the <I>theObject</I> to know how it should be prepared for usage with the database. 
+If <I>theObject</I> is a string, this method will put single quotes to both its side and escape any necessary 
+character using prepareString: method. If <I>theObject</I> is NSData, the prepareBinaryData: method will be 
+used instead. 
+For NSNumber object, the number is just quoted, for calendar dates, the calendar date is formatted in 
+the preferred format for the database.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- selectDB:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/selectDB:">selectDB:</A></H3><P>
+		<CODE>- (BOOL)<B>selectDB:</B>(NSString *)<EM>dbName</EM>
+			
+		</CODE><P>
+		Selects a database to work with. 
+The MCPConnection object needs to be properly inited and connected to a server. 
+If a connection is not yet set or the selection of the database didn't work, returns NO. Returns YES in normal cases where the database is properly selected.<P>
+
+So far, if <I>dbName</I> is a <B>nil</B> pointer it will return NO (as if it cannot connect), most likely this will throw an exception in the future.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- serverInfo"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/serverInfo">serverInfo</A></H3><P>
+		<CODE>- (NSString *)<B>serverInfo</B>
+		</CODE><P>
+		Returns a string giving the server version.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setConnectionOption:toValue:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/setConnectionOption:toValue:">setConnectionOption:toValue:</A></H3><P>
+		<CODE>- (BOOL)<B>setConnectionOption:</B>(int)<EM>option</EM> <B>toValue:</B>(BOOL)<EM>value</EM>
+			
+		</CODE><P>
+		<B>IMPLEMENTED BUT NOT TESTED!!</B><P>
+
+This method is to be used for getting special <I>option</I> for a connection, in which case the MCPConnection has to be inited with the init method, then <I>option</I> are selected, finally connection is done using one of the connect methods:<P>
+
+<CODE>&nbsp;&nbsp;&nbsp;&nbsp; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;MCPConnection *theConnect = [[MCPConnection alloc] init]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[theConnect setConnectionOption: option toValue: value]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;[theConnect connectToHost:albert.com withLogin:@&quot;toto&quot; password:@&quot;albert&quot; port:0]; <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;.... <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;</CODE>
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setEncoding:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/setEncoding:">setEncoding:</A></H3><P>
+		<CODE>- (void)<B>setEncoding:</B>(NSStringEncoding)<EM>theEncoding</EM>
+			
+		</CODE><P>
+		Sets the encoding used by the server for data transfert. 
+Used to make sure the output of the query result is ok even for non-ascii characters 
+The character set (encoding) used by the db is passed to the MCPConnection object upon connection, 
+so most likely the encoding (from -encoding) method is already the proper one. 
+That is to say : It's unlikely you will need to call this method directly, and <B>if ever you use it, do it at your own risks</B>.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stringWithCString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/stringWithCString:">stringWithCString:</A></H3><P>
+		<CODE>- (NSString *)<B>stringWithCString:</B>(const char *)<EM>theCString</EM>
+			
+		</CODE><P>
+		Returns a NSString from a C style string encoded with the character set of theMCPConnection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- stringWithText:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection/stringWithText:">stringWithText:</A></H3><P>
+		<CODE>- (NSString *)<B>stringWithText:</B>(NSData *)<EM>theTextData</EM>
+			
+		</CODE><P>
+		Use the string encoding to convert the returned NSData to a string (for a Text field)
+	
+
+
+
+
+<P><HR>
+Version 1.3 Copyright &copy;2004 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:27 2004
+<P>
+</BODY></HTML>

@@ -1,0 +1,453 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPDocument">MCPDocument</A></H1></FONT><BR>
+
+
+
+	<blockquote><DL><DT><B>Inherits From:</B></DT>  
+	<DD>NSDocument</DD>
+</DL></blockquote>
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPDocument.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Class Description</H2>
+No class description.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Variables</H2>
+	<blockquote>
+	
+		<CODE>BOOL MCPConInfoNeeded, <B>MCPPassNeeded</B>;</CODE><BR>
+		<CODE>NSString *MCPHost, *MCPLogin, *<B>MCPDatabase</B>;</CODE><BR>
+		<CODE>unsigned int <B>MCPPort</B>;</CODE><BR>
+		<CODE>MCPConnection *<B>MCPConnect</B>;</CODE><BR>
+		<CODE>NSWindowController *<B>MCPMainWinCont</B>;</CODE><BR>
+		<CODE>Class <B>MCPConnectedWinCont</B>;</CODE><BR>
+		<CODE>NSString *<B>MCPModelName</B>;</CODE><BR>
+		<CODE>BOOL <B>MCPWillCreateNewDB</B>;</CODE><BR>
+	<P><TABLE>
+	
+		<TR><TD>MCPPassNeeded</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPDatabase</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPPort</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPConnect</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPMainWinCont</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPConnectedWinCont</TD><TD>Window controller used once the connection is established (As a class).</TD></TR>
+	
+		<TR><TD>MCPModelName</TD><TD>No description.</TD></TR>
+	
+		<TR><TD>MCPWillCreateNewDB</TD><TD>No description.</TD></TR>
+	
+	</TABLE>
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			Class Maintenance
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#+ initialize">+ initialize</A></DD>
+		
+		</DL>
+	
+		
+			Initialisation and deallocation
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- init">- init</A></DD>
+		
+			<DD> <A HREF="#- dealloc">- dealloc</A></DD>
+		
+		</DL>
+	
+		
+			Connection to the databse related
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- MCPqueryString:">- MCPqueryString:</A></DD>
+		
+			<DD> <A HREF="#- MCPinsertRow:">- MCPinsertRow:</A></DD>
+		
+			<DD> <A HREF="#- MCPgetConnection">- MCPgetConnection</A></DD>
+		
+		</DL>
+	
+		
+			Accessors to the parameters of the connection
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setMCPHost:">- setMCPHost:</A></DD>
+		
+			<DD> <A HREF="#- setMCPLogin:">- setMCPLogin:</A></DD>
+		
+			<DD> <A HREF="#- setMCPDatabase:">- setMCPDatabase:</A></DD>
+		
+			<DD> <A HREF="#- setMCPPort:">- setMCPPort:</A></DD>
+		
+			<DD> <A HREF="#- setMCPConInfoNeeded:">- setMCPConInfoNeeded:</A></DD>
+		
+			<DD> <A HREF="#- MCPHost">- MCPHost</A></DD>
+		
+			<DD> <A HREF="#- MCPLogin">- MCPLogin</A></DD>
+		
+			<DD> <A HREF="#- MCPDatabase">- MCPDatabase</A></DD>
+		
+			<DD> <A HREF="#- MCPPort">- MCPPort</A></DD>
+		
+			<DD> <A HREF="#- MCPConInfoNeeded">- MCPConInfoNeeded</A></DD>
+		
+			<DD> <A HREF="#- MCPPassNeeded">- MCPPassNeeded</A></DD>
+		
+			<DD> <A HREF="#- MCPisConnected">- MCPisConnected</A></DD>
+		
+			<DD> <A HREF="#- MCPConnect">- MCPConnect</A></DD>
+		
+		</DL>
+	
+		
+			Accessor to the window generated once the connection is established
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setMCPConnectedWinCont:">- setMCPConnectedWinCont:</A></DD>
+		
+			<DD> <A HREF="#- MCPConnectedWinCont">- MCPConnectedWinCont</A></DD>
+		
+		</DL>
+	
+		
+			Accessors to the main window (connection or connected window), through their window controller.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- MCPMainWinCont">- MCPMainWinCont</A></DD>
+		
+		</DL>
+	
+		
+			Accessors to the DB creation instances.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- setMCPModelName:">- setMCPModelName:</A></DD>
+		
+			<DD> <A HREF="#- setMCPWillCreateNewDB:">- setMCPWillCreateNewDB:</A></DD>
+		
+			<DD> <A HREF="#- MCPModelName">- MCPModelName</A></DD>
+		
+			<DD> <A HREF="#- MCPWillCreateNewDB">- MCPWillCreateNewDB</A></DD>
+		
+		</DL>
+	
+		
+			Practical creation of the database, from a model file.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- createModelDB">- createModelDB</A></DD>
+		
+		</DL>
+	
+		
+			Overrides of NSDocument methods.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- dataRepresentationOfType:">- dataRepresentationOfType:</A></DD>
+		
+			<DD> <A HREF="#- loadDataRepresentation:ofType:">- loadDataRepresentation:ofType:</A></DD>
+		
+			<DD> <A HREF="#- makeWindowControllers">- makeWindowControllers</A></DD>
+		
+			<DD> <A HREF="#- windowControllerDidLoadNib:">- windowControllerDidLoadNib:</A></DD>
+		
+		</DL>
+	
+		
+			Method to take care of the password sheet.
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- MCPPasswordSheetDidEnd:returnCode:contextInfo:">- MCPPasswordSheetDidEnd:returnCode:contextInfo:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Class Methods</H2>
+ 
+	
+		
+		<A NAME="+ initialize"></A><H3><A NAME="//apple_ref/occ/clm/MCPDocument/initialize">initialize</A></H3>
+		<CODE>+ (void)<B>initialize</B>
+		</CODE><P>
+		No method description.
+	
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- MCPConInfoNeeded"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPConInfoNeeded">MCPConInfoNeeded</A></H3><P>
+		<CODE>- (BOOL)<B>MCPConInfoNeeded</B>
+		</CODE><P>
+		Return the status of the gathering of information for the connection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPConnect"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPConnect">MCPConnect</A></H3><P>
+		<CODE>- (MCPConnection *)<B>MCPConnect</B>
+		</CODE><P>
+		Return a pointer to the used MCPConnection. SHOULD NOT be used (one should rather use the connection methods : MCPqueryString: or MCPinsertRow:)
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPConnectedWinCont"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPConnectedWinCont">MCPConnectedWinCont</A></H3><P>
+		<CODE>- (Class)<B>MCPConnectedWinCont</B>
+		</CODE><P>
+		Return the Class object of the class used for the main document window (once the connection to the DB server is established).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPDatabase"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPDatabase">MCPDatabase</A></H3><P>
+		<CODE>- (NSString *)<B>MCPDatabase</B>
+		</CODE><P>
+		Returns the actual database name of the used db server.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPHost"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPHost">MCPHost</A></H3><P>
+		<CODE>- (NSString *)<B>MCPHost</B>
+		</CODE><P>
+		Returns the actual hostname of the used db server.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPLogin"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPLogin">MCPLogin</A></H3><P>
+		<CODE>- (NSString *)<B>MCPLogin</B>
+		</CODE><P>
+		Returns the actual login to the used db server.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPMainWinCont"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPMainWinCont">MCPMainWinCont</A></H3><P>
+		<CODE>- (NSWindowController *)<B>MCPMainWinCont</B>
+		</CODE><P>
+		Return the current main window controller for the document (closing this window causes a close of the document).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPModelName"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPModelName">MCPModelName</A></H3><P>
+		<CODE>- (NSString *)<B>MCPModelName</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPPassNeeded"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPPassNeeded">MCPPassNeeded</A></H3><P>
+		<CODE>- (BOOL)<B>MCPPassNeeded</B>
+		</CODE><P>
+		Return the status of the gathering of the password for the connection.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPPasswordSheetDidEnd:returnCode:contextInfo:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPPasswordSheetDidEnd:returnCode:contextInfo:">MCPPasswordSheetDidEnd:returnCode:contextInfo:</A></H3><P>
+		<CODE>- (void)<B>MCPPasswordSheetDidEnd:</B>(NSWindow *)<EM>sheet</EM> <B>returnCode:</B>(int)<EM>returnCode</EM> <B>contextInfo:</B>(void *)<EM>contextInfo</EM>
+			
+		</CODE><P>
+		Method called once the user enterred the password and click Ok (or press return) 
+Try to make a connection (depending of the button clicked), if password is refused, go back to ask connection information.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPPort"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPPort">MCPPort</A></H3><P>
+		<CODE>- (unsigned int)<B>MCPPort</B>
+		</CODE><P>
+		Returns the port used to connect to the database server (0 means default: from mysql.h -&gt; MYSQL_PORT=3306).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPWillCreateNewDB"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPWillCreateNewDB">MCPWillCreateNewDB</A></H3><P>
+		<CODE>- (BOOL)<B>MCPWillCreateNewDB</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPgetConnection"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPgetConnection">MCPgetConnection</A></H3><P>
+		<CODE>- (MCPConnection *)<B>MCPgetConnection</B>
+		</CODE><P>
+		Get directly the MCPConnection of the MCPDocument... This method should be used with care, because one can (inadvertly) modify the DB connection of the document itself, producing further inexpected state later.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPinsertRow:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPinsertRow:">MCPinsertRow:</A></H3><P>
+		<CODE>- (unsigned int)<B>MCPinsertRow:</B>(NSString *)<EM>insert</EM>
+			
+		</CODE><P>
+		Method to use to <I>insert</I> a new row in a table, will return the primary key (auto_increment column) of the new record.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPisConnected"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPisConnected">MCPisConnected</A></H3><P>
+		<CODE>- (BOOL)<B>MCPisConnected</B>
+		</CODE><P>
+		Check if the connection is working.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- MCPqueryString:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/MCPqueryString:">MCPqueryString:</A></H3><P>
+		<CODE>- (MCPResult *)<B>MCPqueryString:</B>(NSString *)<EM>query</EM>
+			
+		</CODE><P>
+		Send a <I>query</I> to the MCPConnection instance variable. For insert queries, one should prefer the insert: method, which return the primary key (auto_increment) of the new row.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- createModelDB"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/createModelDB">createModelDB</A></H3><P>
+		<CODE>- (BOOL)<B>createModelDB</B>
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dataRepresentationOfType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/dataRepresentationOfType:">dataRepresentationOfType:</A></H3><P>
+		<CODE>- (NSData *)<B>dataRepresentationOfType:</B>(NSString *)<EM>aType</EM>
+			
+		</CODE><P>
+		Return data correspoding to archived dictionary containing the parameters for the connection (except for the password, not saved).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- dealloc"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/dealloc">dealloc</A></H3><P>
+		<CODE>- (void)<B>dealloc</B>
+		</CODE><P>
+		Deallocation of the object... autorelease all the members.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- init"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/init">init</A></H3><P>
+		<CODE>- (id)<B>init</B>
+		</CODE><P>
+		Initialisation of the MCPDocument object, by default every thing is setted to null (or empty), accordingly to that the mConInfoNeeded is setted to YES (true): the connection information (parameters) ARE needed.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- loadDataRepresentation:ofType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/loadDataRepresentation:ofType:">loadDataRepresentation:ofType:</A></H3><P>
+		<CODE>- (BOOL)<B>loadDataRepresentation:</B>(NSData *)<EM>data</EM> <B>ofType:</B>(NSString *)<EM>aType</EM>
+			
+		</CODE><P>
+		Load a file containing the connection parameters (except for the password) in the instance of the MCPDocument.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- makeWindowControllers"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/makeWindowControllers">makeWindowControllers</A></H3><P>
+		<CODE>- (NSArray *)<B>makeWindowControllers</B>
+		</CODE><P>
+		Make the proper window: either the Connection Info window or the main browser window.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPConInfoNeeded:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPConInfoNeeded:">setMCPConInfoNeeded:</A></H3><P>
+		<CODE>- (void)<B>setMCPConInfoNeeded:</B>(BOOL)<EM>theConInfoNeeded</EM>
+			
+		</CODE><P>
+		VERY IMPORTANT method! 
+Change the value of mConInfoNeeded AND toggle the states of the object, removing appropriate window and displaying other(s) ...
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPConnectedWinCont:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPConnectedWinCont:">setMCPConnectedWinCont:</A></H3><P>
+		<CODE>- (void)<B>setMCPConnectedWinCont:</B>(Class)<EM>theConnectedWinCont</EM>
+			
+		</CODE><P>
+		Use to set the type of NSWindowController to be used for the main window of the document once the connection as been established.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPDatabase:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPDatabase:">setMCPDatabase:</A></H3><P>
+		<CODE>- (void)<B>setMCPDatabase:</B>(NSString *)<EM>theDatabase</EM>
+			
+		</CODE><P>
+		Sets the name of the database to use on the db server (doesn't accept changes once mConInfoNeeded is NO).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPHost:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPHost:">setMCPHost:</A></H3><P>
+		<CODE>- (void)<B>setMCPHost:</B>(NSString *)<EM>theHost</EM>
+			
+		</CODE><P>
+		Sets the name of the host to which to connect (the one which the db server runs) (doesn't accept changes once MCPConInfoNeeded is NO).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPLogin:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPLogin:">setMCPLogin:</A></H3><P>
+		<CODE>- (void)<B>setMCPLogin:</B>(NSString *)<EM>theLogin</EM>
+			
+		</CODE><P>
+		Sets the name of the database to use on the db server (doesn't accept changes once MCPConInfoNeeded is NO).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPModelName:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPModelName:">setMCPModelName:</A></H3><P>
+		<CODE>- (void)<B>setMCPModelName:</B>(NSString *)<EM>theModelName</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPPort:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPPort:">setMCPPort:</A></H3><P>
+		<CODE>- (void)<B>setMCPPort:</B>(unsigned int)<EM>thePort</EM>
+			
+		</CODE><P>
+		Set the port to use to connect to the database server (doesn't accept changes once mConInfoNeeded is NO).
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- setMCPWillCreateNewDB:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/setMCPWillCreateNewDB:">setMCPWillCreateNewDB:</A></H3><P>
+		<CODE>- (void)<B>setMCPWillCreateNewDB:</B>(BOOL)<EM>theWillCreateNewDB</EM>
+			
+		</CODE><P>
+		No method description.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- windowControllerDidLoadNib:"></A><H3><A NAME="//apple_ref/occ/instm/MCPDocument/windowControllerDidLoadNib:">windowControllerDidLoadNib:</A></H3><P>
+		<CODE>- (void)<B>windowControllerDidLoadNib:</B>(NSWindowController *)<EM>aController</EM>
+			
+		</CODE><P>
+		What to do when a specific window is loaded: 
+- Nothing for the Connection Info Window (MCPConnectionWindow.nib). 
+- Whatever one wants for another window type.<P>
+
+Indeed it looks like this method is never called, unless one has a single window controller document... not the case here...
+	
+
+
+
+
+<P><HR>
+Version 1.1 Copyright &copy;2004 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:28 2004
+<P>
+</BODY></HTML>

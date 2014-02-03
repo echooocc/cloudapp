@@ -1,0 +1,148 @@
+<HTML><HEAD><TITLE></TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+
+<BR><BR><FONT COLOR="#000066"><H1><A NAME="//apple_ref/occ/cl/MCPConnection (MCPFastQueries)">MCPConnection (MCPFastQueries)</A></H1></FONT><BR>
+
+
+
+
+
+
+
+	<blockquote><DL><DT><B>Declared In:</B></DT>
+	<DD>MCPFastQueries.h</DD>
+	</DL></blockquote>
+
+<BR><BR>
+
+
+<H2>Category Description</H2>
+<CODE> $Id: MCPFastQueries.m,v 1.2 2004/08/04 23:24:06 sergecohen Exp $ </CODE><P>
+
+This actegory is made up to keep the extra methods out or the core of the framework.<P>
+
+Basicly this is the place to add methods which are useful, but are just wrappers to the methods of the core (MCPConnection, MCPResult). The purpous being to have a single line call available for current tasks which otherwise would need a couple of lines and object defined.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<P><HR WIDTH=50% ALIGN=LEFT>
+	<H2>Method Types</H2>
+	<blockquote>
+	
+		
+			For insert queries, get directly the Id of the newly inserted row
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- insertQuery:">- insertQuery:</A></DD>
+		
+			<DD> <A HREF="#- updateQuery:">- updateQuery:</A></DD>
+		
+		</DL>
+	
+		
+			Returns directly a proper NS object, or a collection (NSArray, NSDictionary...).
+		
+		<DL><DT></DT>
+		
+			<DD> <A HREF="#- getFirstFieldFromQuery:">- getFirstFieldFromQuery:</A></DD>
+		
+			<DD> <A HREF="#- getFirstRowFromQuery:asType:">- getFirstRowFromQuery:asType:</A></DD>
+		
+			<DD> <A HREF="#- getAllRowsFromQuery:asType:">- getAllRowsFromQuery:asType:</A></DD>
+		
+			<DD> <A HREF="#- getQuery:colWithIndex:">- getQuery:colWithIndex:</A></DD>
+		
+			<DD> <A HREF="#- getQuery:colWithName:">- getQuery:colWithName:</A></DD>
+		
+		</DL>
+	
+	</blockquote>
+
+
+
+
+ 
+
+	<HR WIDTH=50% ALIGN=LEFT>
+	<H2>Instance Methods</H2>
+ 
+	
+		
+		<A NAME="- getAllRowsFromQuery:asType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/getAllRowsFromQuery:asType:">getAllRowsFromQuery:asType:</A></H3><P>
+		<CODE>- (id)<B>getAllRowsFromQuery:</B>(NSString *)<EM>aQuery</EM> <B>asType:</B>(MCPReturnType)<EM>aType</EM>
+			
+		</CODE><P>
+		Get a bidimensional table of the whole rows of the result from the query <I>aQuery</I>. The type of the result is choosen by <I>aType</I>, it can be (MCPTypeArray, MCPTypeDictionary, MCPTypeFlippedArray &amp; MCPTypeFlippedDictionary). Description of the types can be found in method <CODE>fetch2DResultAsType:</CODE>.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getFirstFieldFromQuery:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/getFirstFieldFromQuery:">getFirstFieldFromQuery:</A></H3><P>
+		<CODE>- (id)<B>getFirstFieldFromQuery:</B>(NSString *)<EM>aQuery</EM>
+			
+		</CODE><P>
+		Get the first field of the first row of the result from the query (<I>aQuery</I>). Should return <B>nil</B> if no object at all are selected.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getFirstRowFromQuery:asType:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/getFirstRowFromQuery:asType:">getFirstRowFromQuery:asType:</A></H3><P>
+		<CODE>- (id)<B>getFirstRowFromQuery:</B>(NSString *)<EM>aQuery</EM> <B>asType:</B>(MCPReturnType)<EM>aType</EM>
+			
+		</CODE><P>
+		Get the firdst row of the result from the query <I>aQuery</I>, in a collection of type determined by <I>aType</I> (MCPTypeArray or MCPTypeDictionary)
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getQuery:colWithIndex:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/getQuery:colWithIndex:">getQuery:colWithIndex:</A></H3><P>
+		<CODE>- (NSArray *)<B>getQuery:</B>(NSString *)<EM>aQuery</EM> <B>colWithIndex:</B>(unsigned int)<EM>aCol</EM>
+			
+		</CODE><P>
+		Get a column (as an NSArray) of the result from the query <I>aQuery</I>. The column is choosen from it's index, starting from 0.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- getQuery:colWithName:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/getQuery:colWithName:">getQuery:colWithName:</A></H3><P>
+		<CODE>- (NSArray *)<B>getQuery:</B>(NSString *)<EM>aQuery</EM> <B>colWithName:</B>(NSString *)<EM>aColName</EM>
+			
+		</CODE><P>
+		Get a column (as an NSArray) of the result from the query <I>aQuery</I>. The column is choosen from it's name.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- insertQuery:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/insertQuery:">insertQuery:</A></H3><P>
+		<CODE>- (my_ulonglong)<B>insertQuery:</B>(NSString *)<EM>aQuery</EM>
+			
+		</CODE><P>
+		Send the query <I>aQuery</I> to the server and retrieve the row <B>id</B> if the table have a autoincrement column. 
+Returns 0 if nothing have been inserted.
+	
+		<P><HR WIDTH=25% ALIGN=LEFT>
+		<A NAME="- updateQuery:"></A><H3><A NAME="//apple_ref/occ/instm/MCPConnection (MCPFastQueries)/updateQuery:">updateQuery:</A></H3><P>
+		<CODE>- (my_ulonglong)<B>updateQuery:</B>(NSString *)<EM>aQuery</EM>
+			
+		</CODE><P>
+		Send the query <I>aQuery</I> to the server and retrieve the number of affected rows (should work with <CODE>update</CODE>, <CODE>delete</CODE>, <CODE>insert</CODE> and <CODE>select</CODE> type of queries).<P>
+
+NB: This can also be used with a <CODE>select</CODE> query if you are only interested in the number of row complying with the query; you'll get no chance to get the result from the query, except by sending the query again (with <CODE>queryString:</CODE>)
+	
+
+
+
+
+<P><HR>
+Version 1.1 Copyright &copy;2003 by Serge Cohen.  All Rights Reserved.   Mon Aug 09 11:00:26 2004
+<P>
+</BODY></HTML>
